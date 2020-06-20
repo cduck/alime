@@ -1,0 +1,99 @@
+/* This file was automatically generated (https://github.com/cduck/alime) */
+.alime, .alimestatic {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+}
+.alime > *:nth-child(n+2) {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  width: 0.6em;
+  height: 1em;
+  text-align: center;
+  position: relative;
+  left: 0em;
+  transform-origin: center center;
+  transition-duration: 1s;
+  transition-property: transform;
+}
+.alime > * > * {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  width: 0.6em;
+  height: 1em;
+  text-align: center;
+  transform-origin: center center;
+  transition-duration: 1s;
+  transition-property: transform;
+}
+.alime:hover > *,
+.alime:active > *,
+.alime:focus > *,
+.alime.alimeanim > * {
+  transform: rotate(60deg);
+}
+.alime.alimeclicked > * {
+  transform: rotate(60deg);
+  transition-duration: 0;
+  transition-property: none;
+}
+.alime:hover > * > *,
+.alime:active > * > *,
+.alime:focus > * > *,
+.alime.alimeanim > * > * {
+  transform: rotate(-60deg);
+}
+.alime.alimeclicked > * > * {
+  transform: rotate(-60deg);
+  transition-duration: 0;
+  transition-property: none;
+}
+.alime > .sr-only, .alimestatic > .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.alime > :nth-child(2) {left: 4.8em; transform-origin: 7.2em 12.451151em;}
+.alime > :nth-child(3) {left: 4.8em; transform-origin: 5.4em 9.333459em;}
+.alime > :nth-child(4) {left: 4.8em; transform-origin: 6.6em 11.41192em;}
+.alime > :nth-child(5) {left: -0.6em; transform-origin: 0.3em 0.5em;}
+.alime > :nth-child(6) {left: -1.8em; transform-origin: 0.3em 0.5em;}
+.alime > :nth-child(7) {left: 4.8em; transform-origin: 5.7em 9.853074em;}
+.alime > :nth-child(8) {left: -1.2em; transform-origin: 0.3em 0.5em;}
+.alime > :nth-child(9) {left: 4.8em; transform-origin: -1.8em -3.137307em;}
+.alime > :nth-child(10) {left: 4.8em; transform-origin: -2.4em -4.176537em;}
+.alime > :nth-child(11) {left: -2.4em; transform-origin: 0.3em 0.5em;}
+.alime > :nth-child(12) {left: -2.4em; transform-origin: 0.3em 0.5em;}
+.alime > :nth-child(13) {left: -2.4em; transform-origin: 7.2em 12.451151em;}
+.alime > :nth-child(14) {left: 3.0em; transform-origin: 3.9em 6.735383em;}
+.alime > :nth-child(15) {left: 3.0em; transform-origin: -1.8em -3.137307em;}
+.alime > :nth-child(16) {left: 2.4em; transform-origin: 2.4em 4.137307em;}
+.alime > :nth-child(17) {left: 1.8em; transform-origin: 0.0em -0.019615em;}
+.alime > :nth-child(18) {left: -9.6em; transform-origin: 0.3em 0.5em;}
+.alime > :nth-child(19) {left: -3.6em; transform-origin: 1.2em 2.058846em;}
+.alime > :nth-child(20) {left: 0.0em; transform-origin: 0.9em 1.53923em;}
+.alime > :nth-child(21) {left: -0.6em; transform-origin: -1.5em -2.617691em;}
+.alime > :nth-child(22) {left: -1.2em; transform-origin: 0.3em 0.5em;}
+.alime > :nth-child(23) {left: -1.8em; transform-origin: 2.1em 3.617691em;}
+.alime > :nth-child(24) {left: -11.4em; transform-origin: 0.3em 0.5em;}
+.alime > :nth-child(25) {left: -3.0em; transform-origin: -0.6em -1.058846em;}
+.alime > :nth-child(26) {left: -6.0em; transform-origin: 0.9em 1.53923em;}
+.alime > :nth-child(27) {left: -4.2em; transform-origin: 1.8em 3.098076em;}
+.alime > :nth-child(28) {left: -8.4em; transform-origin: -0.6em -1.058846em;}
+.alime > :nth-child(29) {left: -5.4em; transform-origin: -1.2em -2.098076em;}
+.alime > :nth-child(30) {left: -6.0em; transform-origin: 1.2em 2.058846em;}
+.alime > :nth-child(31) {left: -6.6em; transform-origin: 3.3em 5.696152em;}
+.alime > :nth-child(32) {left: -7.2em; transform-origin: -2.1em -3.656922em;}
+.alime > :nth-child(33) {left: -7.8em; transform-origin: 3.0em 5.176537em;}
+.alime > :nth-child(34) {left: -8.4em; transform-origin: 1.5em 2.578461em;}
+.alime > :nth-child(35) {left: -9.0em; transform-origin: 0.6em 1.019615em;}
+.alime > :nth-child(36) {left: -9.0em; transform-origin: 4.2em 7.254998em;}
