@@ -20,11 +20,11 @@ def counter_to_str(counter):
     return ''.join(counter.elements())
 
 class Alime:
-    def __init__(self, email='placeholder@example.com',
+    def __init__(self, email_or_list='placeholder@example.com',
                  text0=TEXT0, text1=TEXT1, text2=TEXT2, placeholder=PLACEHOLDER,
                  char_width=CHAR_WIDTH, rot_degrees=ROT_DEGREES,
                  templates=templates):
-        self.email = email
+        self.email_or_list = email_or_list
         self.text0 = text0
         self.text1 = text1
         self.text2 = text2
@@ -35,12 +35,12 @@ class Alime:
 
         self._generate()
 
-    def _generate(self):
-        text2 = self.text2.replace('placeholder@example.com', self.email)
+    def _generate_single(self, email, text0, text1, text2, extra_class=None):
+        text2 = text2.replace('placeholder@example.com', email)
 
         # Count characters
-        c0 = Counter(self.text0)
-        c1 = Counter(self.text1)
+        c0 = Counter(text0)
+        c1 = Counter(text1)
         c2 = Counter(text2)
         c0[self.placeholder] = c1[self.placeholder] = c2[self.placeholder] = 0
 
@@ -53,7 +53,7 @@ class Alime:
         c_temp = Counter(c_all)
         c_rest = c_all - c0
         str_rest= ''.join(sorted(counter_to_str(c_rest)))
-        char_order = self.text0.replace(self.placeholder, str_rest)
+        char_order = text0.replace(self.placeholder, str_rest)
         char_order, len(char_order)
 
         # Calculate character positions for 1 and 2
@@ -69,29 +69,31 @@ class Alime:
                     positions[i] = idx
                     char_search_index[char] = idx + 1
             return positions, unused_index
-        positions1, unused_index1 = calc_positions(self.text1)
+        positions1, unused_index1 = calc_positions(text1)
         positions2, unused_index2 = calc_positions(text2)
 
         # Calculate text width
-        max_width = max(len(self.text0), len(self.text1), len(text2))
+        max_width = max(len(text0), len(text1), len(text2))
         em_width = round(max_width * self.char_width, 6)
 
         # Generate HTML
-        self.generated_chars = ''.join(
+        generated_chars = ''.join(
             self.templates.CHAR.format(char=html.escape(char))
             for char in char_order
         )
-        self.generated_html = self.templates.HTML.format(
+        generated_html = self.templates.HTML.format(
+            extra_class=' {}'.format(extra_class) if extra_class else '',
             width=em_width,
-            chars=self.generated_chars,
+            chars=generated_chars,
         )
 
         # Generate CSS
         def dist_to_yoff(dist):
             rot_rad = math.radians(self.rot_degrees)
             return dist / 2 / math.tan(rot_rad/2)
-        self.css_rep=''.join(
+        css_rep=''.join(
             self.templates.CSS_REP.format(
+                extra_class='.{}'.format(extra_class) if extra_class else '',
                 i=i+2,
                 left=round((positions1[i]-i)*self.char_width, 6),
                 origin=round((positions2[i]-positions1[i]+1)/2*self.char_width,
@@ -104,10 +106,34 @@ class Alime:
             )
             for i in range(len(char_order))
         )
+
+        return generated_chars, em_width, generated_html, css_rep
+
+    def _generate(self):
+        if isinstance(self.email_or_list, str):
+            emails = [self.email_or_list]
+        else:
+            emails = self.email_or_list
+        add_class = len(emails) != 1
+
+        (self.generated_chars,
+         self.generated_widths,
+         self.generated_html_list,
+         self.generated_css_rep) = zip(*(
+            self._generate_single(email, self.text0, self.text1, self.text2,
+                                  extra_class='alime{}'.format(i) * add_class)
+            for i, email in enumerate(emails)
+        ))
+
+        # Generate HTML
+        self.generated_html = templates.HTML_BETWEEN_STATIC.join(
+            self.generated_html_list)
+
+        # Generate CSS
         self.generated_css = self.templates.CSS.format(
             pos_deg=self.rot_degrees,
             neg_deg=-self.rot_degrees,
-            rep=self.css_rep,
+            rep=''.join(self.generated_css_rep),
         )
 
         # JavaScript

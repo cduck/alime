@@ -13,11 +13,11 @@ def main():
         'The files alime-example.html, alime.css, and alime.js will be written '
         'to the current directory.\n'
         'More options are available from the Python code.')
-    parser.add_argument('email', type=str, help=
-        'The email address to obfuscate')
+    parser.add_argument('emails', metavar='email', type=str, nargs='+', help=
+        'The email address (or addresses) to obfuscate')
     args = parser.parse_args()
 
-    gen = Alime(email=args.email)
+    gen = Alime(args.emails)
     gen.save()
 
 if __name__ == '__main__':

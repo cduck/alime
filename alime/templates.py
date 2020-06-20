@@ -1,10 +1,12 @@
 HTML = '''\
-<a href="#javascript-disabled" class="alime" style="width: {width}em">
+<a href="#javascript-disabled" class="alime{extra_class}" \
+style="width: {width}em">
     <span class="sr-only">(Click to send mail)</span>
     <!-- Automatically generated (https://github.com/cduck/alime) -->
     {chars}
 </a>\
 '''
+HTML_BETWEEN_STATIC = '\n\n<br>\n\n'
 CHAR = '<span><span>{char}</span></span>'
 
 CSS = '''\
@@ -76,7 +78,7 @@ CSS = '''\
 {rep}\
 '''
 CSS_REP = '''\
-.alime > :nth-child({i}) {{\
+.alime{extra_class} > :nth-child({i}) {{\
 left: {left}em; \
 transform-origin: {origin}em {yoff}em;\
 {other}\
