@@ -4,7 +4,7 @@ logger = logging.getLogger(__name__)
 
 name = 'alime'
 package_name = name
-version = '0.1.0'
+version = '0.1.1'
 
 try:
     with open('README.md', 'r') as f:
