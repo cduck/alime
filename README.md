@@ -1,4 +1,6 @@
-<img alt="Demo animation" src="https://raw.githubusercontent.com/cduck/alime/master/docs/demo.gif?token=AAS4QHQEUYBAI4VLH6R75EC667FW2" height="98">
+<a href="https://cduck.github.io/alime/demo.html">
+<img alt="Demo animation" src="https://raw.githubusercontent.com/cduck/alime/master/docs/demo.gif" height="98">
+</a>
 
 # Alime: Animated anti-bot email obfuscation for your website
 
